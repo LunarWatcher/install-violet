@@ -1,0 +1,32 @@
+name: "Install Violet"
+description: "Installs LunarWatcher/violet in the workflow runner. Only compatible with Linux"
+
+inputs:
+  version:
+    description: "What version to install. Mutually exclusive with 'latest'"
+    required: false
+    default: ''
+  latest:
+    description: "Whether to install the latest version. Mutually exclusive with 'version'"
+    default: true
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Yoink Violet artefact
+      uses: robinraju/release-downloader@v1.12
+      id: yoink-obsidian
+      with:
+        repository: LunarWatcher/violet
+        latest: ${{ inputs.latest }}
+        tarBall: false
+        zipBall: false
+        tag: ${{ inputs.version }}
+        fileName: ${{ steps.identifier.outputs.ARTEFACT_IDENTIFIER }}
+        out-file-path: ${{ runner.temp }}/violet.tar.gz
+
+    - name: Install obsidian artefact (Ubuntu)
+      run: |
+        tar -xf ${{ runner.temp }}/violet.tar.gz -C /usr/local
+      shell: bash
