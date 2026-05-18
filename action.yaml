@@ -23,10 +23,10 @@ runs:
         tarBall: false
         zipBall: false
         tag: ${{ inputs.version }}
-        fileName: ${{ steps.identifier.outputs.ARTEFACT_IDENTIFIER }}
-        out-file-path: ${{ runner.temp }}/violet.tar.gz
+        fileName: violet-linux-x86_64.tar.gz
+        out-file-path: ${{ runner.temp }}/
 
     - name: Install obsidian artefact (Ubuntu)
       run: |
-        tar -xf ${{ runner.temp }}/violet.tar.gz -C /usr/local
+        tar -xf ${{ runner.temp }}/violet-linux-x86_64.tar.gz -C /usr/local
       shell: bash
