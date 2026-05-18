@@ -30,3 +30,7 @@ runs:
       run: |
         sudo tar -xf ${{ runner.temp }}/violet-linux-x86_64.tar.gz -C /usr/local --strip-components=1
       shell: bash
+
+    - name: Show violet
+      run: |
+        which violet
