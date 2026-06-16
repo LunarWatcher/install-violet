@@ -28,7 +28,7 @@ runs:
 
     - name: Install violet artefact (Ubuntu)
       run: |
-        if [[ command -v sudo ]]; then
+        if command -v sudo; then
             export SUDO=sudo
         fi
         $SUDO tar -xf ${{ runner.temp }}/violet-linux-x86_64.tar.gz -C /usr/local --strip-components=1
