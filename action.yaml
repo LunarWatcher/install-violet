@@ -26,8 +26,10 @@ runs:
         fileName: violet-linux-x86_64.tar.gz
         out-file-path: ${{ runner.temp }}/
 
-    - name: Install obsidian artefact (Ubuntu)
+    - name: Install violet artefact (Ubuntu)
       run: |
+        # Required all of the sudden for some reason
+        sudo apt-get upgrade libstdc++6
         sudo tar -xf ${{ runner.temp }}/violet-linux-x86_64.tar.gz -C /usr/local --strip-components=1
       shell: bash
 
