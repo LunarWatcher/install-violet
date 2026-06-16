@@ -28,8 +28,6 @@ runs:
 
     - name: Install violet artefact (Ubuntu)
       run: |
-        # Required all of the sudden for some reason
-        sudo apt update && sudo apt upgrade -y libstdc++6
         sudo tar -xf ${{ runner.temp }}/violet-linux-x86_64.tar.gz -C /usr/local --strip-components=1
       shell: bash
 
